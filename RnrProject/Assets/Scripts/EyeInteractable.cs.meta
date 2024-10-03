@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 0fe0f6b407e0be540b44a522779aed13
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - OnHoverActiveMaterial: {instanceID: 0}
+  - OnActiveInactiveMaterial: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
