@@ -49,7 +49,8 @@ public class EyeInteractable : MonoBehaviour
             if (meshRenderer.material != OnHoverActiveMaterial)
             {
                 audioSource.PlayOneShot(hoverSound);
-                
+                //audioSource.PlayOneShot(hoverSound, velocity); or smth like that
+
             }
             OnObjectHover?.Invoke();
             meshRenderer.material = OnHoverActiveMaterial;
@@ -73,7 +74,7 @@ public class EyeInteractable : MonoBehaviour
         if (meshRenderer.material != OnHoverActiveMaterial)
         {
             audioSource.PlayOneShot(hoverSound);
-
+            //audioSource.PlayOneShot(hoverSound, velocity); or smth like that
         }
         meshRenderer.material = OnHoverActiveMaterial;
     }

@@ -10,7 +10,7 @@ public class PauseController : MonoBehaviour
     {
         OVRInput.Update();
 
-        if (OVRInput.GetDown(OVRInput.Button.Three) || Input.GetButtonDown("XButton"))
+        if (OVRInput.GetDown(OVRInput.Button.Three) || Input.GetButtonDown("XButton")) //what is  button three/ xbutton
         {
             IsGamePaused = !IsGamePaused;
             Time.timeScale = IsGamePaused ? 0 : 1;

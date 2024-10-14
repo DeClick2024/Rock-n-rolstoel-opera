@@ -2,14 +2,13 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NoteToMIDIConverter : MonoBehaviour
+public class NoteToMIDIConverter 
 {
     [SerializeField] private string noteName; //could be public, need to think about it
+
     private int _noteValue;
 
-    //should i add some idiot prootection?
-
-    Dictionary<string, int> noteDictionary = new Dictionary<string, int>()
+    static Dictionary<string, int> noteDictionary = new Dictionary<string, int>()
     {
         {"C", 24 },
         {"C#", 25 },
@@ -25,25 +24,43 @@ public class NoteToMIDIConverter : MonoBehaviour
         {"B", 35 }
     };
 
-    int NoteToValue(string noteName)
+    /// <summary>
+    /// Converts a note name to its MIDI value
+    /// </summary>
+    public static int NoteToValue(string noteName)
     {
         string note = "";
-        string octave = "";
+        string pitch = "";
 
         for (int i=0; i<noteName.Length;i++)
         {
             if (noteName[i] >= 65 && noteName[i] <= 71 || noteName[i] >= 97 && noteName[i] <= 103 || noteName[i] == 35) note += noteName[i];
-            else if (noteName[i] >= 48 && noteName[i] <= 56 || noteName[i] == 45) octave += noteName[i];
+            else if (noteName[i] >= 48 && noteName[i] <= 56 || noteName[i] == 45) pitch += noteName[i];
         }
 
-        Int32.TryParse(octave, out int octaveValue);
+        Int32.TryParse(pitch, out int octaveValue);
         note = note.ToUpper();
 
         return noteDictionary[note] + (octaveValue * 12);
     }
 
-    private void Start()
+    /// <summary>
+    /// Converts a MIDI value to its note name
+    /// </summary>
+    public static string ValueToNode(int pitchValue)
     {
-        Debug.LogWarning(NoteToValue(noteName));
+        int octaveValue = (pitchValue - 24) / 12;
+        int noteNameValue = pitchValue % 12 + 24;
+        string noteName = "";
+        foreach (KeyValuePair<string, int> note in noteDictionary)
+        {
+            if (note.Value == noteNameValue)
+            {
+                noteName = note.Key;
+                break;
+            }
+        }
+        noteName += octaveValue.ToString();
+        return noteName;
     }
 }

@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OnMouseEnterActive: 1
+  role: 0
   GotoSceneString: 
   OnObjectHover:
     m_PersistentCalls:
