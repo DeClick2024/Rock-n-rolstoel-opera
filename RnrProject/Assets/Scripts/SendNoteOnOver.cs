@@ -23,7 +23,7 @@ using UnityEngine.Video;
         public OSCReceiver Receiver;
 
         [Header("Visuals")]
-        public TMPro.TextMeshProUGUI NoteNameMesh; 
+        [SerializeField] TMPro.TextMeshPro NoteNameMesh;
         public GameObject eyeInteractObject;
         public VideoClip videoClip;
         public VideoPlayer videoPlayer;
