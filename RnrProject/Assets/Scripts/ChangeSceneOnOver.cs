@@ -1,40 +1,27 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEditor;
 using UnityEngine.SceneManagement;
+
+enum OnOverRole { ChangeScene, Quit };
 
 public class ChangeSceneOnOver : MonoBehaviour
 {
-    enum OnoverRole { ChangeScene, Quit };
-
+    //private SceneAsset GotoScene;  //only works in editor, not on headset
     public bool IsHovered { get; set; }
     public bool OnMouseEnterActive = false;
 
-    [SerializeField]
-    private OnoverRole role;
+    [SerializeField] private OnOverRole role;
+    [SerializeField] private string GotoSceneString;
+    [SerializeField] private UnityEvent OnObjectHover;
+    [SerializeField] private Material OnHoverActiveMaterial;
+    [SerializeField] private Material OnHoverInactiveMaterial;
 
-    [SerializeField]
-    //private SceneAsset GotoScene;  //only works in editor, not on headset
-    private string GotoSceneString;
-
-    [SerializeField]
-    private UnityEvent OnObjectHover;
-
-    [SerializeField]
-    private Material OnHoverActiveMaterial;
-
-    [SerializeField]
-    private Material OnHoverInactiveMaterial;
-
-    public TMPro.TextMeshProUGUI UIText;
-
+    public TMPro.TextMeshProUGUI UIText; //can we change it from ccanvas to smth else?
     private MeshRenderer meshRenderer;
 
-    private bool Isenter = false;
-
-    private int ind = -1;
+    private bool _isButtonTriggered = false;
+    private int _buttonTriggerSeconds = -1;
 
     private void OnValidate()
     {
@@ -43,35 +30,23 @@ public class ChangeSceneOnOver : MonoBehaviour
             gameObject.name = "Goto: " + GotoSceneString;
             UIText.text = GotoSceneString;
         }
-
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         meshRenderer = GetComponent<MeshRenderer>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
-        if (IsHovered && !Isenter)
-        {
-            OnStartHover();
-        }
-        else if (!IsHovered && Isenter)
-        {
-            OnEndHover();
-        }
-        
+        if (IsHovered && !_isButtonTriggered) OnStartHover();
+        else if (!IsHovered && _isButtonTriggered) OnEndHover();
     }
 
     private void OnMouseEnter()
     {
         if (!OnMouseEnterActive) return;
         IsHovered = true;
-        //OnStartHover();
     }
 
 
@@ -79,24 +54,18 @@ public class ChangeSceneOnOver : MonoBehaviour
     {
         if (!OnMouseEnterActive) return;
         IsHovered = false;
-        //OnEndHover();
-    }
-
-    void changeScene()
-    {
-        SceneManager.LoadScene(GotoSceneString);
     }
 
     void OnStartHover()
     {
-        Isenter = true;
+        _isButtonTriggered = true;
         OnObjectHover?.Invoke();
        
         if (meshRenderer.material != OnHoverActiveMaterial)
         {
-            ind = 0;
+            _buttonTriggerSeconds = 0;
             StartCoroutine(waitCoroutine());
-            UIText.text = GotoSceneString + " " + (5 - ind).ToString();
+            UIText.text = GotoSceneString + " " + (5 - _buttonTriggerSeconds).ToString();
         }
         meshRenderer.material = OnHoverActiveMaterial;
     }
@@ -105,8 +74,8 @@ public class ChangeSceneOnOver : MonoBehaviour
     {
         Debug.Log("Onendhover");
         meshRenderer.material = OnHoverInactiveMaterial;
-        Isenter = false;
-        ind = -1;
+        _isButtonTriggered = false;
+        _buttonTriggerSeconds = -1;
     }
 
     IEnumerator waitCoroutine()
@@ -116,28 +85,27 @@ public class ChangeSceneOnOver : MonoBehaviour
 
         for (int i=0; i<6; i++)
         {
-            Debug.Log("ind=" + ind);
-            //yield on a new YieldInstruction that waits for 1 seconds.
+            Debug.Log("ind=" + _buttonTriggerSeconds);
             yield return new WaitForSeconds(1);
 
-            if (ind >= 5)
+            if (_buttonTriggerSeconds >= 5)
             {
-               if (role == OnoverRole.ChangeScene)
+               if (role == OnOverRole.ChangeScene)
                 {
                     SceneManager.LoadScene(GotoSceneString);
                 }
-                if (role == OnoverRole.Quit)
+                if (role == OnOverRole.Quit)
                 {
                     Debug.Log("Quit from menu");
                     Application.Quit();
                 }
 
             }
-            else if (ind >= 0)
+            else if (_buttonTriggerSeconds >= 0)
             {
 
-                ind++;
-                UIText.text = GotoSceneString + " " + (5 - ind).ToString();
+                _buttonTriggerSeconds++;
+                UIText.text = GotoSceneString + " " + (5 - _buttonTriggerSeconds).ToString();
             }
 
             else
@@ -146,9 +114,6 @@ public class ChangeSceneOnOver : MonoBehaviour
                 break;
             }
         }
-
-        
-
         //Print the time when the function ends
         Debug.Log("Finished Coroutine at timestamp : " + Time.time);
     }

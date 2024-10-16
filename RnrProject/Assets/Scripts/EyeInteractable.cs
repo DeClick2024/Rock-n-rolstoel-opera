@@ -4,48 +4,38 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Collider))]
 [RequireComponent(typeof(Rigidbody))]
 //[RequireComponent(typeof(AudioSource))]
+
 public class EyeInteractable : MonoBehaviour
 {
     public bool IsHovered { get; set; }
-    public bool OnMouseEnterActive = false;
+    public bool OnMouseEnterActive = false; //should it be public?
     public bool UseUnityAudioClip = false;
 
-    [SerializeField]
-    private UnityEvent OnObjectHover;
-
-    [SerializeField]
-    private Material OnHoverActiveMaterial;
-
-    [SerializeField]
-    private Material OnHoverInactiveMaterial;
-
-    [SerializeField]
-    private AudioClip hoverSound;
+    [SerializeField] private UnityEvent OnObjectHover;
+    [SerializeField] private Material OnHoverActiveMaterial;
+    [SerializeField] private Material OnHoverInactiveMaterial;
+    [SerializeField] private AudioClip hoverSound;
 
     private MeshRenderer meshRenderer;
-    private AudioSource audioSource; 
+    private AudioSource audioSource;
 
-    [SerializeField]
+    //[SerializeField] private extOSC.Examples.SendNoteOnOver OscSend;
+    [SerializeField] private SendNoteOnOver OscSend;
 
-    private extOSC.Examples.SendNoteOnOver OscSend;
-
-    private bool Isenter=false;
+    private bool IsNoteTriggered = false;
     
-
-
     private void Start()
     {
         meshRenderer = GetComponent<MeshRenderer>();
         audioSource = GetComponent<AudioSource>();
-      
     }
 
     private void Update()
     {
-        if (IsHovered && !Isenter)
+        if (IsHovered && !IsNoteTriggered)
         {
             OscSend.PlayNote();
-            Isenter = true;
+            IsNoteTriggered = true;
             if (meshRenderer.material != OnHoverActiveMaterial)
             {
                 audioSource.PlayOneShot(hoverSound);
@@ -55,13 +45,16 @@ public class EyeInteractable : MonoBehaviour
             OnObjectHover?.Invoke();
             meshRenderer.material = OnHoverActiveMaterial;
         }
-        else if (!IsHovered && Isenter)
+        else if (!IsHovered && IsNoteTriggered)
         {
             meshRenderer.material = OnHoverInactiveMaterial;
             OscSend.StopNote();
-            Isenter = false;
+            IsNoteTriggered = false;
         }
     }
+
+    //maybe this script could be split into 2 separate scripts
+    //one for eyes, one foor mouse
 
     /// <summary>
     /// Helper function to simulate eyetracking interactiuon in editor
@@ -88,7 +81,5 @@ public class EyeInteractable : MonoBehaviour
 
         meshRenderer.material = OnHoverInactiveMaterial;
         OscSend.StopNote();
-
     }
-
 }

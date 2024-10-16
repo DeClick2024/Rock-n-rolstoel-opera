@@ -264,15 +264,13 @@ MonoBehaviour:
   pitch: 70
   NoteName: A#3
   velocity: 100
-  NoteNameMesh: {fileID: 5589391281593336645}
-  eyeInteractObject: {fileID: 6121802708000692921}
+  LastReceivedVelocity: 0
   Transmitter: {fileID: 0}
   Receiver: {fileID: 0}
-  LastReceivedVelocity: 0
-  IdleObject: {fileID: 0}
+  NoteNameMesh: {fileID: 5589391281593336645}
+  eyeInteractObject: {fileID: 6121802708000692921}
   videoClip: {fileID: 32900000, guid: 0f78fce1c5c08fa48980a89d6208b4bc, type: 3}
   videoPlayer: {fileID: 978729678551155157}
-  targetRenderer: {fileID: 1511392626448097204}
 --- !u!328 &978729678551155157
 VideoPlayer:
   m_ObjectHideFlags: 0

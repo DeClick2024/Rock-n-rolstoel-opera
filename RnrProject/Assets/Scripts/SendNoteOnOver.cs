@@ -1,8 +1,9 @@
+using extOSC;
 using UnityEngine;
 using UnityEngine.Video;
 
-namespace extOSC.Examples
-{
+//namespace extOSC.Examples
+//{
     public class SendNoteOnOver : MonoBehaviour
     {
         //adresses
@@ -15,22 +16,17 @@ namespace extOSC.Examples
         public int pitch;
         public string NoteName;
         public int velocity;
-
-
-        public TMPro.TextMeshProUGUI NoteNameMesh;
-        public GameObject eyeInteractObject;
-        //public GuideBall GuideBall;
+        public int LastReceivedVelocity = 0; //probably can be removed
 
         [Header("OSC Settings")]
         public OSCTransmitter Transmitter;
         public OSCReceiver Receiver;
 
-        public int LastReceivedVelocity = 0; //probably can be removed
-        public Renderer IdleObject;
-        //public Renderer GuideObject;
+        [Header("Visuals")]
+        public TMPro.TextMeshProUGUI NoteNameMesh; 
+        public GameObject eyeInteractObject;
         public VideoClip videoClip;
         public VideoPlayer videoPlayer;
-        public Renderer targetRenderer;
 
         //helper vars for setting note nr and name
         private int _lastPitch;
@@ -100,31 +96,10 @@ namespace extOSC.Examples
             Transmitter.Send(message);
         }
 
-        private void changeColorTo(Color toColor) //should be deleted
-        {
-            // Get the Renderer component from the new cube
-            //var cubeRenderer = GetComponent<Renderer>();
-            var bigCubeRenderer = eyeInteractObject.GetComponent<Renderer>();
-            // Call SetColor using the shader property name "_Color" and setting the color to red
-            //cubeRenderer.material.SetColor("_Color", toColor);
-            bigCubeRenderer.material.SetColor("_Color", toColor);
-        }
-
-        private void ChangeIdleObjectColorTo(Color toColor) //should be deleted
-        {
-            IdleObject.material.SetColor("_Color", toColor);
-        }
-
         private void ChangeGuideObjectColorTo(Color toColor) //this func sshould be moved somewhere else 
         {
             //GuideObject.material.SetColor("_Color", toColor);
         }
-        private void ChangeMainCubeColor(Color toColor) //should be deleted
-
-        {
-            targetRenderer.material.SetColor("_Color", toColor);
-        }
-
 
         //Receiving messages code
         //Velocity first, then note
@@ -166,4 +141,4 @@ namespace extOSC.Examples
             }
         }
     }
-}
+//}

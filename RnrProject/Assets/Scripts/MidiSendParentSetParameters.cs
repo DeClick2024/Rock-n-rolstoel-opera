@@ -2,49 +2,44 @@ using UnityEngine;
 
 public class MidiSendParentSetParameters : MonoBehaviour
 {
-
-    public bool OnMouseEnterActive = false;
-    public bool UseUnityAudioClip = false;
+    [SerializeField] bool OnMouseEnterActive; //guess this can be hidden
+    [SerializeField] bool UseUnityAudioClip;
 
     void Start()
     {
-        //if not in editor disable onmouseover
         if (!Application.isEditor)
         {
             OnMouseEnterActive = false;
 
-            //look up all childs of Eyeinteractable
-            EyeInteractable[] myItems = FindObjectsOfType(typeof(EyeInteractable)) as EyeInteractable[];
-            //Debug.Log("Found " + myItems.Length + " instances with this script attached");
-            foreach (EyeInteractable item in myItems)
+            EyeInteractable[] eyeInteractebles = FindEyeInteractables();
+            foreach (EyeInteractable note in eyeInteractebles)
             {
-                item.OnMouseEnterActive = OnMouseEnterActive;
+                note.OnMouseEnterActive = OnMouseEnterActive;
             }
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnValidate() //this should be removed and all the necessary logis should be transfered to start
     {
-
-    }
-
-    /**
-     * Script to set parameters in all childs
-     */
-    private void OnValidate()
-    {
-        //look up all childs of Eyeinteractable
-        EyeInteractable[] myItems = FindObjectsOfType(typeof(EyeInteractable)) as EyeInteractable[];
-        //Debug.Log("Found " + myItems.Length + " instances with this script attached");
-        foreach (EyeInteractable item in myItems)
+        EyeInteractable[] eyeInteractebles = FindEyeInteractables();
+        foreach (EyeInteractable note in eyeInteractebles)
         {
-            item.OnMouseEnterActive = OnMouseEnterActive;
-            item.UseUnityAudioClip = UseUnityAudioClip;
+            note.OnMouseEnterActive = OnMouseEnterActive;
+            note.UseUnityAudioClip = UseUnityAudioClip;
         }
 
         //set parameters
+    }
 
-
+    private EyeInteractable[] FindEyeInteractables()
+    {
+        EyeInteractable[] eyeInteractebles = new EyeInteractable[transform.childCount];
+        int i = 0;
+        foreach (Transform note in transform)
+        {
+            eyeInteractebles[i] = note.GetComponentInChildren<EyeInteractable>();
+            i++;
+        }
+        return eyeInteractebles;
     }
 }
