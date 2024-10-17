@@ -54,7 +54,7 @@ public class EyeInteractable : MonoBehaviour
     }
 
     //maybe this script could be split into 2 separate scripts
-    //one for eyes, one foor mouse
+    //one for eyes, one for mouse
 
     /// <summary>
     /// Helper function to simulate eyetracking interactiuon in editor

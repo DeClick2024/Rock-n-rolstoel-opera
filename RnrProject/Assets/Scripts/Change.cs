@@ -2,10 +2,8 @@ using UnityEngine;
 
 public class Change : MonoBehaviour
 {
-    [SerializeField]
-    private Color defaultColor = Color.white;
-    [SerializeField]
-    private Color hoverColor = Color.red;
+    [SerializeField] private Color defaultColor = Color.white;
+    [SerializeField] private Color hoverColor = Color.red;
 
     private Color originalColor;
     private Renderer rend;

@@ -19,7 +19,7 @@ public class MidiSendParentSetParameters : MonoBehaviour
         }
     }
 
-    private void OnValidate() //this should be removed and all the necessary logis should be transfered to start
+    private void OnValidate() //this should be removed before the building
     {
         EyeInteractable[] eyeInteractebles = FindEyeInteractables();
         foreach (EyeInteractable note in eyeInteractebles)
