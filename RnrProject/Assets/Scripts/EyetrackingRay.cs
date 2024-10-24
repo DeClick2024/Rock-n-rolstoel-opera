@@ -3,6 +3,9 @@ using UnityEngine;
 [RequireComponent(typeof(LineRenderer))]
 public class EyeTrackingRay : MonoBehaviour
 {
+    public Vector3 cursorPoint;
+
+    [Header("Ray Settings")]
     [SerializeField] private float rayDistance = 1.0f;
     [SerializeField] private float rayWidth = 0.01f;
     [SerializeField] private LayerMask layersToInclude;
@@ -28,7 +31,7 @@ public class EyeTrackingRay : MonoBehaviour
         var ray = new Ray(transform.position, transform.forward);
         if (p.Raycast(new Ray(transform.position, transform.forward), out float enter))
         {
-            Vector3 thePoint = ray.GetPoint(enter);
+            cursorPoint = ray.GetPoint(enter);
         }
 
         // Does the ray intersect any objects excluding the player layer

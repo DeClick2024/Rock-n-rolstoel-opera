@@ -8,7 +8,7 @@ using UnityEngine.Events;
 public class EyeInteractable : MonoBehaviour
 {
     public bool IsHovered { get; set; }
-    public bool OnMouseEnterActive = false; //should it be public?
+    public bool OnMouseEnterActive = false; 
     public bool UseUnityAudioClip = false;
 
     [SerializeField] private UnityEvent OnObjectHover;
