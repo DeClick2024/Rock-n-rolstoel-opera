@@ -11,6 +11,7 @@ public class ChangeSceneOnOver : MonoBehaviour
     public bool IsHovered { get; set; }
     public bool OnMouseEnterActive = false;
 
+    
     [SerializeField] private OnOverRole role;
     [SerializeField] private string GotoSceneString;
     [SerializeField] private UnityEvent OnObjectHover;
