@@ -1,19 +1,27 @@
 using UnityEngine;
-using Oculus;
 
 public class PauseController : MonoBehaviour
 {
     public static bool IsGamePaused { get; private set; }
 
-    // Update is called once per frame
+    private void Awake()
+    {
+        AnyInputController.PauseButton += PauseOnOff;
+    }
+
     void Update()
     {
         OVRInput.Update();
+    }
 
-        if (OVRInput.GetDown(OVRInput.Button.Three) || Input.GetButtonDown("XButton")) //what is  button three/ xbutton
-        {
-            IsGamePaused = !IsGamePaused;
-            Time.timeScale = IsGamePaused ? 0 : 1;
-        }
+    void OnDestroy()
+    {
+        AnyInputController.PauseButton -= PauseOnOff;
+    }
+
+    void PauseOnOff()
+    {
+        IsGamePaused = !IsGamePaused;
+        Time.timeScale = IsGamePaused ? 0 : 1;
     }
 }
