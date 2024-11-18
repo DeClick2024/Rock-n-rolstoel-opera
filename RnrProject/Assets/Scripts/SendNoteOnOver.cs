@@ -54,10 +54,6 @@ using UnityEngine.Video;
 
         private void OnValidate()
         {
-            //FillNoteLookup();
-            //Debug.Log("NoteName=" + NoteName + " lastName=" + lastNoteName);
-            //Debug.Log("NoteNr=" + pitch + " lastNr=" + lastPitch);
-
             if (_lastNoteName != NoteName)
             {
                 SetNotePitchFromName();
@@ -69,7 +65,6 @@ using UnityEngine.Video;
                 _lastPitch = pitch;
             }
             gameObject.name = "Note_" + NoteName;
-
         }
 
         public void PlayNote()

@@ -1,1 +1,73 @@
-{}
+{
+    "name": "VRInput",
+    "maps": [
+        {
+            "name": "Music",
+            "id": "25bf4149-0a28-4eca-901d-ff7cb894fbb1",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "53570df7-8f5b-40c7-8587-9557fa918ecb",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "fd518c4e-f4de-4c21-a5b8-5f3a94ccca6e",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "UI",
+            "id": "70212636-f6f7-4ded-b577-a1122d7d42cb",
+            "actions": [
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "3583b0b4-c81a-4fe8-a79b-875828c1259c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "9088cc02-d7c1-421a-8b5f-6866c687e344",
+                    "path": "<OculusTouchController>{LeftHand}/primaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "732d9032-3ffd-4e8f-a7c6-8b65eb6e037b",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
