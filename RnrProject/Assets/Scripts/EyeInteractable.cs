@@ -18,12 +18,18 @@ public class EyeInteractable : MonoBehaviour
 
     private MeshRenderer meshRenderer;
     private AudioSource audioSource;
+    private int velocity;
 
     //[SerializeField] private extOSC.Examples.SendNoteOnOver OscSend;
     [SerializeField] private SendNoteOnOver OscSend;
 
     private bool IsNoteTriggered = false;
-    
+
+    private void Awake()
+    {
+        NoteVolume.VolumeSender += SetVelocity;
+    }
+
     private void Start()
     {
         meshRenderer = GetComponent<MeshRenderer>();
@@ -32,25 +38,30 @@ public class EyeInteractable : MonoBehaviour
 
     private void Update()
     {
-        if (IsHovered && !IsNoteTriggered)
+        if (IsHovered && !IsNoteTriggered) //add joystick
         {
-            OscSend.PlayNote();
+            OscSend.PlayNote(velocity); 
             IsNoteTriggered = true;
             if (meshRenderer.material != OnHoverActiveMaterial)
             {
-                audioSource.PlayOneShot(hoverSound);
-                //audioSource.PlayOneShot(hoverSound, velocity); or smth like that
+                //audioSource.PlayOneShot(hoverSound);
+                audioSource.PlayOneShot(hoverSound, velocity); 
 
             }
             OnObjectHover?.Invoke();
             meshRenderer.material = OnHoverActiveMaterial;
         }
-        else if (!IsHovered && IsNoteTriggered)
+        else if (!IsHovered && IsNoteTriggered) //add joystick
         {
             meshRenderer.material = OnHoverInactiveMaterial;
             OscSend.StopNote();
             IsNoteTriggered = false;
         }
+    }
+
+    private void OnDestroy()
+    {
+        NoteVolume.VolumeSender -= SetVelocity;
     }
 
     //maybe this script could be split into 2 separate scripts
@@ -63,11 +74,11 @@ public class EyeInteractable : MonoBehaviour
     {
         if (!OnMouseEnterActive) return;
 
-        OscSend.PlayNote();
+        OscSend.PlayNote(velocity);
         if (meshRenderer.material != OnHoverActiveMaterial)
         {
-            audioSource.PlayOneShot(hoverSound);
-            //audioSource.PlayOneShot(hoverSound, velocity); or smth like that
+            //audioSource.PlayOneShot(hoverSound);
+            audioSource.PlayOneShot(hoverSound, velocity); 
         }
         meshRenderer.material = OnHoverActiveMaterial;
     }
@@ -81,5 +92,10 @@ public class EyeInteractable : MonoBehaviour
 
         meshRenderer.material = OnHoverInactiveMaterial;
         OscSend.StopNote();
+    }
+
+    private void SetVelocity(float volume)
+    {
+        velocity = (int)volume; //to int
     }
 }

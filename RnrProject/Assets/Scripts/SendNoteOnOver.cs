@@ -67,12 +67,12 @@ using UnityEngine.Video;
             gameObject.name = "Note_" + NoteName;
         }
 
-        public void PlayNote()
+        public void PlayNote(int newVelocity) //there should be (volume)
         {
-            SendMidiNote(pitch, velocity);
+            SendMidiNote(pitch, newVelocity);
         }
 
-        public void StopNote()
+        public void StopNote() 
         {
             SendMidiNote(pitch, 0);
         }
@@ -81,7 +81,7 @@ using UnityEngine.Video;
         {
             var message = new OSCMessage(SEND_ADRESS);
             message.AddValue(OSCValue.Int(pitch));
-            message.AddValue(OSCValue.Int(velocity));
+            message.AddValue(OSCValue.Int(velocity)); //velocity IS a volume
             return message;
         }
 
