@@ -28,6 +28,15 @@ public class TestGameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //this is not working
+        //float vert = Input.GetAxis("Horizontal")
+
+        //this is
+        float vert = Gamepad.current.leftStick.value.y;
+        if (vert > 0)
+        {
+            //Log if stick goes up
+            Debug.Log("vert=" + vert);
+        }
     }
 }
