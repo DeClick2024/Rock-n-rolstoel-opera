@@ -1,5 +1,5 @@
 using System;
-using UnityEngine;
+using UnityEngine;  
 
 public class AnyInputController : MonoBehaviour
 {
@@ -26,7 +26,7 @@ public class AnyInputController : MonoBehaviour
         {
             float horizonal = Input.GetAxis("Horizontal");
             float vertical = Input.GetAxis("Vertical");
-            if (LeftJoystick != null) LeftJoystick(new Vector2(horizonal, vertical));
+            LeftJoystick?.Invoke(new Vector2(horizonal, vertical));
         }
     }
 
@@ -34,7 +34,7 @@ public class AnyInputController : MonoBehaviour
     {
         if (OVRInput.GetDown(OVRInput.Button.Three) || Input.GetButtonDown("XButton"))
         {
-            if (PauseButton != null) PauseButton();
+            PauseButton?.Invoke();
         }
     }
 }

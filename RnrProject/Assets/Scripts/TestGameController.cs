@@ -32,7 +32,8 @@ public class TestGameController : MonoBehaviour
         //float vert = Input.GetAxis("Horizontal")
 
         //this is
-        float vert = Gamepad.current.leftStick.value.y;
+        //float vert = Gamepad.current.leftStick.value.y;
+        float vert = Gamepad.current.leftStick.x.ReadValue();
         if (vert > 0)
         {
             //Log if stick goes up

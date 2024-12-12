@@ -343,6 +343,7 @@ MonoBehaviour:
   OnHoverActiveMaterial: {fileID: 2100000, guid: bfac12319a596d348b2a94c4777f0bd7, type: 2}
   OnHoverInactiveMaterial: {fileID: 2100000, guid: 94636df36b9711b43832858842331787, type: 2}
   hoverSound: {fileID: 0}
+  OneStringVelocity: 0.25
   OscSend: {fileID: 0}
 --- !u!33 &8621006522618239390
 MeshFilter:
