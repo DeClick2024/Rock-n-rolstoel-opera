@@ -1,6 +1,4 @@
-using Meta.WitAi;
 using System;
-using System.Diagnostics.Eventing.Reader;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -97,7 +95,6 @@ public class EyeInteractable : MonoBehaviour
             OscSend.PlayNote(OneStringVelocityINT);
             if (meshRenderer.material != OnHoverActiveMaterial)
             {
-                //audioSource.PlayOneShot(hoverSound);
                 audioSource.PlayOneShot(hoverSound, OneStringVelocity);
                 isAtThePlayPosition = false;
             }
