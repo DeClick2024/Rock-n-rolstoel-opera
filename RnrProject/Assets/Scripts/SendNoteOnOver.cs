@@ -1,4 +1,5 @@
 using extOSC;
+using System;
 using UnityEngine;
 using UnityEngine.Video;
 
@@ -31,6 +32,11 @@ using UnityEngine.Video;
         //helper vars for setting note nr and name
         private int _lastPitch;
         private string _lastNoteName;
+
+        private void Awake()
+        {
+            AnyInputController.Arrows += ChangePitchAtScene;
+        }
 
         protected virtual void Start()
         {
@@ -65,6 +71,21 @@ using UnityEngine.Video;
                 _lastPitch = pitch;
             }
             gameObject.name = "Note_" + NoteName;
+        }
+
+        private void OnDestroy()
+        {
+            AnyInputController.Arrows -= ChangePitchAtScene;
+        }
+
+        private void ChangePitchAtScene(Vector2 arrowsInput)
+        {
+            if ((pitch - 24) / 12 > 0) 
+            {
+                int newPitch = Convert.ToInt32(arrowsInput.y);
+                pitch += newPitch * 12;
+                SetNoteNameFromPitch();
+            }
         }
 
         public void PlayNote(int newVelocity) //there should be (volume)
