@@ -295,6 +295,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8583617472684562820}
   - component: {fileID: 3865349561967349355}
+  - component: {fileID: 8435893118183697453}
   - component: {fileID: 8621006522618239390}
   - component: {fileID: 1511392626448097204}
   - component: {fileID: 9087090415583585585}
@@ -306,7 +307,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &8583617472684562820
 Transform:
@@ -346,6 +347,18 @@ MonoBehaviour:
   OneStringVelocity: 0.25
   PlayOnMiddlePosition: 0
   OscSend: {fileID: 0}
+--- !u!114 &8435893118183697453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6121802708000692921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc4115d8d1746a4478c3317c4a6be694, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!33 &8621006522618239390
 MeshFilter:
   m_ObjectHideFlags: 0

@@ -130,6 +130,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1200194813}
     m_Modifications:
+    - target: {fileID: 970565011082870250, guid: 54b860490c4d6494e94244e1b03b659a, type: 3}
+      propertyPath: m_LocalScale.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 970565011082870250, guid: 54b860490c4d6494e94244e1b03b659a, type: 3}
+      propertyPath: m_LocalScale.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 970565011082870250, guid: 54b860490c4d6494e94244e1b03b659a, type: 3}
+      propertyPath: m_LocalScale.z
+      value: -0
+      objectReference: {fileID: 0}
     - target: {fileID: 2485127525176436417, guid: 54b860490c4d6494e94244e1b03b659a, type: 3}
       propertyPath: m_Name
       value: Note_D3
@@ -229,6 +241,26 @@ PrefabInstance:
     - target: {fileID: 5589391281593336645, guid: 54b860490c4d6494e94244e1b03b659a, type: 3}
       propertyPath: m_text
       value: D4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7102562255049211634, guid: 54b860490c4d6494e94244e1b03b659a, type: 3}
+      propertyPath: sceneSettings
+      value: 
+      objectReference: {fileID: 1200194815}
+    - target: {fileID: 8055987412885534773, guid: 54b860490c4d6494e94244e1b03b659a, type: 3}
+      propertyPath: m_text
+      value: D3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8435893118183697453, guid: 54b860490c4d6494e94244e1b03b659a, type: 3}
+      propertyPath: sceneSettings
+      value: 
+      objectReference: {fileID: 1200194815}
+    - target: {fileID: 8583617472684562820, guid: 54b860490c4d6494e94244e1b03b659a, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 8583617472684562820, guid: 54b860490c4d6494e94244e1b03b659a, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -351,6 +383,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1200194813}
     m_Modifications:
+    - target: {fileID: 970565011082870250, guid: 54b860490c4d6494e94244e1b03b659a, type: 3}
+      propertyPath: m_LocalScale.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 970565011082870250, guid: 54b860490c4d6494e94244e1b03b659a, type: 3}
+      propertyPath: m_LocalScale.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 970565011082870250, guid: 54b860490c4d6494e94244e1b03b659a, type: 3}
+      propertyPath: m_LocalScale.z
+      value: -0
+      objectReference: {fileID: 0}
     - target: {fileID: 2485127525176436417, guid: 54b860490c4d6494e94244e1b03b659a, type: 3}
       propertyPath: m_Name
       value: Note_E3
@@ -439,9 +483,37 @@ PrefabInstance:
       propertyPath: hoverSound
       value: 
       objectReference: {fileID: 8300000, guid: 27ef97987382a4965adda4a465f807ce, type: 3}
+    - target: {fileID: 3865349561967349355, guid: 54b860490c4d6494e94244e1b03b659a, type: 3}
+      propertyPath: UseUnityAudioClip
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3865349561967349355, guid: 54b860490c4d6494e94244e1b03b659a, type: 3}
+      propertyPath: OnMouseEnterActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5589391281593336645, guid: 54b860490c4d6494e94244e1b03b659a, type: 3}
       propertyPath: m_text
       value: C5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7102562255049211634, guid: 54b860490c4d6494e94244e1b03b659a, type: 3}
+      propertyPath: sceneSettings
+      value: 
+      objectReference: {fileID: 1200194815}
+    - target: {fileID: 8055987412885534773, guid: 54b860490c4d6494e94244e1b03b659a, type: 3}
+      propertyPath: m_text
+      value: E3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8435893118183697453, guid: 54b860490c4d6494e94244e1b03b659a, type: 3}
+      propertyPath: sceneSettings
+      value: 
+      objectReference: {fileID: 1200194815}
+    - target: {fileID: 8583617472684562820, guid: 54b860490c4d6494e94244e1b03b659a, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 8583617472684562820, guid: 54b860490c4d6494e94244e1b03b659a, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -461,6 +533,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1200194813}
   - component: {fileID: 1200194814}
+  - component: {fileID: 1200194815}
   m_Layer: 0
   m_Name: New UI
   m_TagString: Untagged
@@ -477,7 +550,7 @@ Transform:
   m_GameObject: {fileID: 1200194812}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.179229, y: -4.7164626, z: 71.36}
+  m_LocalPosition: {x: -3.179229, y: -4.7164626, z: 64.950005}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -501,6 +574,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnMouseEnterActive: 1
   UseUnityAudioClip: 1
+--- !u!114 &1200194815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1200194812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89942a2127e230c4f9a2ff0669419638, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distanseFromCamera: -2.3
+  buttonSize: 1.18
 --- !u!1001 &1243623538
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -509,6 +596,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1200194813}
     m_Modifications:
+    - target: {fileID: 970565011082870250, guid: 54b860490c4d6494e94244e1b03b659a, type: 3}
+      propertyPath: m_LocalScale.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 970565011082870250, guid: 54b860490c4d6494e94244e1b03b659a, type: 3}
+      propertyPath: m_LocalScale.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 970565011082870250, guid: 54b860490c4d6494e94244e1b03b659a, type: 3}
+      propertyPath: m_LocalScale.z
+      value: -0
+      objectReference: {fileID: 0}
     - target: {fileID: 2485127525176436417, guid: 54b860490c4d6494e94244e1b03b659a, type: 3}
       propertyPath: m_Name
       value: Note_F3
@@ -597,9 +696,37 @@ PrefabInstance:
       propertyPath: hoverSound
       value: 
       objectReference: {fileID: 8300000, guid: e84ff5557eaaa45b8a31bdad13ace6a7, type: 3}
+    - target: {fileID: 3865349561967349355, guid: 54b860490c4d6494e94244e1b03b659a, type: 3}
+      propertyPath: UseUnityAudioClip
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3865349561967349355, guid: 54b860490c4d6494e94244e1b03b659a, type: 3}
+      propertyPath: OnMouseEnterActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5589391281593336645, guid: 54b860490c4d6494e94244e1b03b659a, type: 3}
       propertyPath: m_text
       value: A4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7102562255049211634, guid: 54b860490c4d6494e94244e1b03b659a, type: 3}
+      propertyPath: sceneSettings
+      value: 
+      objectReference: {fileID: 1200194815}
+    - target: {fileID: 8055987412885534773, guid: 54b860490c4d6494e94244e1b03b659a, type: 3}
+      propertyPath: m_text
+      value: F3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8435893118183697453, guid: 54b860490c4d6494e94244e1b03b659a, type: 3}
+      propertyPath: sceneSettings
+      value: 
+      objectReference: {fileID: 1200194815}
+    - target: {fileID: 8583617472684562820, guid: 54b860490c4d6494e94244e1b03b659a, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 8583617472684562820, guid: 54b860490c4d6494e94244e1b03b659a, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -633,6 +760,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1200194813}
     m_Modifications:
+    - target: {fileID: 970565011082870250, guid: 54b860490c4d6494e94244e1b03b659a, type: 3}
+      propertyPath: m_LocalScale.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 970565011082870250, guid: 54b860490c4d6494e94244e1b03b659a, type: 3}
+      propertyPath: m_LocalScale.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 970565011082870250, guid: 54b860490c4d6494e94244e1b03b659a, type: 3}
+      propertyPath: m_LocalScale.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1340999604756064748, guid: 54b860490c4d6494e94244e1b03b659a, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1511392626448097204, guid: 54b860490c4d6494e94244e1b03b659a, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2485127525176436417, guid: 54b860490c4d6494e94244e1b03b659a, type: 3}
       propertyPath: m_Name
       value: Note_C3
@@ -718,12 +865,48 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1887317394}
     - target: {fileID: 3865349561967349355, guid: 54b860490c4d6494e94244e1b03b659a, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3865349561967349355, guid: 54b860490c4d6494e94244e1b03b659a, type: 3}
       propertyPath: hoverSound
       value: 
       objectReference: {fileID: 8300000, guid: ba1c2317aafb2466fac7b3e9b32bdc6f, type: 3}
+    - target: {fileID: 3865349561967349355, guid: 54b860490c4d6494e94244e1b03b659a, type: 3}
+      propertyPath: UseUnityAudioClip
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3865349561967349355, guid: 54b860490c4d6494e94244e1b03b659a, type: 3}
+      propertyPath: OnMouseEnterActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5589391281593336645, guid: 54b860490c4d6494e94244e1b03b659a, type: 3}
       propertyPath: m_text
       value: F4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7102562255049211634, guid: 54b860490c4d6494e94244e1b03b659a, type: 3}
+      propertyPath: sceneSettings
+      value: 
+      objectReference: {fileID: 1200194815}
+    - target: {fileID: 8008818032470463389, guid: 54b860490c4d6494e94244e1b03b659a, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8055987412885534773, guid: 54b860490c4d6494e94244e1b03b659a, type: 3}
+      propertyPath: m_text
+      value: C3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8583617472684562820, guid: 54b860490c4d6494e94244e1b03b659a, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 8583617472684562820, guid: 54b860490c4d6494e94244e1b03b659a, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 9087090415583585585, guid: 54b860490c4d6494e94244e1b03b659a, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
