@@ -18,7 +18,7 @@ public class SceneSettings : MonoBehaviour
     private Transform _allButtons;
     private Vector3 _originalPosition;
 
-    void Start()
+    void OnEnable()
     {
         _allButtons = GetComponent<Transform>();
         _originalPosition = _allButtons.position;
