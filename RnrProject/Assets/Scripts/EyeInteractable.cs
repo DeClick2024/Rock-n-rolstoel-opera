@@ -35,6 +35,8 @@ public class EyeInteractable : MonoBehaviour
 
     private bool IsNoteTriggered = false;
     private bool timerActive = false;
+    private float joyStickZeroStamp = 0;
+    private float timeStrumValue = 0;
 
     private void Awake()
     {
@@ -56,11 +58,13 @@ public class EyeInteractable : MonoBehaviour
 
     private void PlaySound()
     {
-        Debug.Log($"'{IsHovered}, {isAtThePlayPosition}, {timerActive}");
+        //Debug.Log($"'{IsHovered}, {isAtThePlayPosition}, {timerActive}");
         if (IsHovered && isAtThePlayPosition && !timerActive)
         {
+            Debug.Log("play:" + timeStrumValue);
             OscSend.PlayNote(OneStringVelocityINT);
-            audioSource.PlayOneShot(hoverSound, OneStringVelocity);
+            //audioSource.PlayOneShot(hoverSound, OneStringVelocity);
+            audioSource.PlayOneShot(hoverSound, timeStrumValue);
             StartCoroutine(StartTimer());
         }
     }
@@ -74,6 +78,7 @@ public class EyeInteractable : MonoBehaviour
 
     private void FixedUpdate()
     {
+        //Debug.Log("curjoy=" + currentJoystickXPosition + " prevjoy=" + prevJoystickXPosition);
         OneStringVelocity = currentJoystickXPosition - prevJoystickXPosition;
         if (OneStringVelocity < 0) OneStringVelocity *= -1;
         if (OneStringVelocity > 1) OneStringVelocity = 1;
@@ -96,7 +101,17 @@ public class EyeInteractable : MonoBehaviour
         }
         else if (!PlayOnMiddlePosition)
         {
-            if (currentPosition.x >= 0.9f || currentPosition.x <= -0.9f) isAtThePlayPosition = true;
+            if (currentPosition.x == 0)
+            {
+                timerActive = false;
+                joyStickZeroStamp = Time.time;
+            }
+            if (currentPosition.x >= 0.9f || currentPosition.x <= -0.9f)
+            {
+                timeStrumValue = 1-(Time.time - joyStickZeroStamp);
+                Debug.Log("Timestrumvalue=" + timeStrumValue);
+                isAtThePlayPosition = true;
+            }
             else isAtThePlayPosition = false;
         }
     }
