@@ -11,25 +11,27 @@ public class EyeInteractable : MonoBehaviour
     public bool IsHovered { get; set; } //changed by eyetrackingray (need to make a mouse ray for tests)
     public bool OnMouseEnterActive = false;
     public bool UseUnityAudioClip = false;
-    private bool isAtThePlayPosition = false;
+    private bool _isAtThePlayPosition = false;
 
-    private float currentJoystickXPosition;
-    private float prevJoystickXPosition = 0f;
+    private float _currentJoystickXPosition;
+    private float _prevJoystickXPosition = 0f;
 
     //[SerializeField] private UnityEvent OnObjectHover;
-    [SerializeField] private Material OnHoverActiveMaterial;
-    [SerializeField] private Material OnNoteTriggeredMaterial;
-    [SerializeField] private AudioClip hoverSound;
-    private float OneStringVelocity;
+    [SerializeField] private Material _onHoverActiveMaterial;
+    [SerializeField] private Material _onNoteTriggeredMaterial;
+    [SerializeField] private AudioClip _hoverSound;
+    private float _oneStringVelocity;
+    private float[] _velocitiesSet = new float[4];
 
     [Tooltip("Set 'true' if you want to play note on middle position of the joystick, and 'false' if you want to play note on negative and positve positions")]
     [SerializeField] private bool PlayOnMiddlePosition;
 
-    private int OneStringVelocityINT;
+    private int _finalVelocityINT;
+    private float _finalVelocity;
 
-    private MeshRenderer meshRenderer;
-    private Material originalMaterial;
-    private AudioSource audioSource;
+    private MeshRenderer _meshRenderer;
+    private Material _originalMaterial;
+    private AudioSource _audioSource;
 
     [SerializeField] private SendNoteOnOver OscSend;
 
@@ -43,9 +45,9 @@ public class EyeInteractable : MonoBehaviour
 
     private void Start()
     {
-        meshRenderer = GetComponent<MeshRenderer>();
-        audioSource = GetComponent<AudioSource>();
-        originalMaterial = meshRenderer.material;
+        _meshRenderer = GetComponent<MeshRenderer>();
+        _audioSource = GetComponent<AudioSource>();
+        _originalMaterial = _meshRenderer.material;
     }
 
     private void Update()
@@ -56,29 +58,38 @@ public class EyeInteractable : MonoBehaviour
 
     private void PlaySound()
     {
-        Debug.Log($"'{IsHovered}, {isAtThePlayPosition}, {timerActive}");
-        if (IsHovered && isAtThePlayPosition && !timerActive)
+        //Debug.Log($"'{IsHovered}, {isAtThePlayPosition}, {timerActive}");
+        if (IsHovered && _isAtThePlayPosition && !timerActive)
         {
-            OscSend.PlayNote(OneStringVelocityINT);
-            audioSource.PlayOneShot(hoverSound, OneStringVelocity);
+            _finalVelocity = (_velocitiesSet[0] + _velocitiesSet[1] + _velocitiesSet[2] + _velocitiesSet[3]) / 4;
+            VelocityIntToFloat();
+            OscSend.PlayNote(_finalVelocityINT);
+            _audioSource.PlayOneShot(_hoverSound, _finalVelocity);
             StartCoroutine(StartTimer());
         }
     }
 
     private void ChangeMaterial()
     {
-        if (IsHovered && !IsNoteTriggered) meshRenderer.material = OnHoverActiveMaterial;
-        else if (IsHovered && IsNoteTriggered) meshRenderer.material = OnNoteTriggeredMaterial; //coroutine
-        else if (!IsHovered) meshRenderer.material = originalMaterial;
+        if (IsHovered && !IsNoteTriggered) _meshRenderer.material = _onHoverActiveMaterial;
+        else if (IsHovered && IsNoteTriggered) _meshRenderer.material = _onNoteTriggeredMaterial; //coroutine
+        else if (!IsHovered) _meshRenderer.material = _originalMaterial;
     }
 
-    private void FixedUpdate()
+    private void FixedUpdate() //should be replaced by smth workable
     {
-        OneStringVelocity = currentJoystickXPosition - prevJoystickXPosition;
-        if (OneStringVelocity < 0) OneStringVelocity *= -1;
-        if (OneStringVelocity > 1) OneStringVelocity = 1;
-        VelocityIntToFloat();
-        prevJoystickXPosition = currentJoystickXPosition;
+        _oneStringVelocity = _currentJoystickXPosition - _prevJoystickXPosition;
+        if (_oneStringVelocity < 0) _oneStringVelocity *= -1;
+        if (_oneStringVelocity > 1) _oneStringVelocity = 1;
+        _prevJoystickXPosition = _currentJoystickXPosition;
+        if (_oneStringVelocity != 0)
+        {
+            for (int i = 0; i < _velocitiesSet.Length - 1; i++)
+            {
+                _velocitiesSet[i] = _velocitiesSet[i + 1];
+            }
+            _velocitiesSet[0] = _oneStringVelocity;
+        }
     }
 
     private void OnDestroy()
@@ -88,23 +99,23 @@ public class EyeInteractable : MonoBehaviour
 
     void JoystickReciever(Vector2 currentPosition) //задержка времени
     {
-        currentJoystickXPosition = currentPosition.x;
+        _currentJoystickXPosition = currentPosition.x;
         if (PlayOnMiddlePosition)
         {
-            if (currentPosition.x == 0f) isAtThePlayPosition = true;
-            else isAtThePlayPosition = false;
+            if (currentPosition.x == 0f) _isAtThePlayPosition = true;
+            else _isAtThePlayPosition = false;
         }
         else if (!PlayOnMiddlePosition)
         {
-            if (currentPosition.x >= 0.9f || currentPosition.x <= -0.9f) isAtThePlayPosition = true;
-            else isAtThePlayPosition = false;
+            if (currentPosition.x >= 0.9f || currentPosition.x <= -0.9f) _isAtThePlayPosition = true;
+            else _isAtThePlayPosition = false;
         }
     }
 
     void VelocityIntToFloat()
     {
-        float temp = OneStringVelocity * 100;
-        OneStringVelocityINT = Convert.ToInt32(temp);
+        float temp = _finalVelocity * 100;
+        _finalVelocityINT = Convert.ToInt32(temp);
     }
 
     private IEnumerator StartTimer()
