@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/jan 16th tests/8 notes C base color.unity
+    guid: 057b967a28d145542ad012d9cf1ae315
+  - enabled: 1
     path: Assets/Scenes/summer24 randy scenes/4 notes C.unity
     guid: 2ea383c7dbd861f4dbdee68d105d41a7
   - enabled: 1

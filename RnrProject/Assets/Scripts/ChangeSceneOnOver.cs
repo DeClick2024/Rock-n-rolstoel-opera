@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
-enum OnOverRole { ChangeScene, Quit };
+enum OnOverRole { ChangeScene, Quit, JoyStickUse};
 
 public class ChangeSceneOnOver : MonoBehaviour
 {
@@ -11,7 +11,8 @@ public class ChangeSceneOnOver : MonoBehaviour
     public bool IsHovered { get; set; }
     public bool OnMouseEnterActive = false;
 
-    
+    [SerializeField] private MidiSendParentSetParameters noteParent;
+
     [SerializeField] private OnOverRole role;
     [SerializeField] private string GotoSceneString;
     [SerializeField] private UnityEvent OnObjectHover;
@@ -36,7 +37,11 @@ public class ChangeSceneOnOver : MonoBehaviour
     void Start()
     {
         meshRenderer = GetComponent<MeshRenderer>();
-    }
+        if (role == OnOverRole.JoyStickUse)
+        {
+            UIText.text = "stick=" + noteParent.UseJoyStick;
+        }
+        }
 
     void Update()
     {
@@ -99,6 +104,12 @@ public class ChangeSceneOnOver : MonoBehaviour
                 {
                     Debug.Log("Quit from menu");
                     Application.Quit();
+                }
+                if (role == OnOverRole.JoyStickUse)
+                {
+                    noteParent.setUseJoyStick(!noteParent.UseJoyStick);
+                    UIText.text = "stick=" + noteParent.UseJoyStick;
+
                 }
 
             }

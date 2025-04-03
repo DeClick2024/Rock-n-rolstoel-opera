@@ -40,7 +40,7 @@ public class NoteToMIDIConverter
 
         Int32.TryParse(pitch, out int octaveValue);
         note = note.ToUpper();
-
+        if (note == "") return 0;
         return noteDictionary[note] + (octaveValue * 12);
     }
 

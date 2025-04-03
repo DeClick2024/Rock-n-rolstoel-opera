@@ -1362,19 +1362,13 @@ MonoBehaviour:
   pitch: 62
   NoteName: D3
   velocity: 100
-  NoteNameMesh: {fileID: 0}
-  eyeInteractObject: {fileID: 0}
-  SendAddress: /hand0
-  ReceiveNote: /Note1
-  ReceiveVelocity: /Velocity1
+  LastReceivedVelocity: 0
   Transmitter: {fileID: 0}
   Receiver: {fileID: 0}
-  LastReceivedVelocity: 0
-  IdleObject: {fileID: 902550746336056687}
-  GuideObject: {fileID: 8939457408881939420}
+  NoteNameMesh: {fileID: 0}
+  eyeInteractObject: {fileID: 0}
   videoClip: {fileID: 0}
   videoPlayer: {fileID: 0}
-  targetRenderer: {fileID: 0}
 --- !u!64 &2414465603217183180
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1438,12 +1432,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnMouseEnterActive: 0
   UseUnityAudioClip: 0
-  OnObjectHover:
-    m_PersistentCalls:
-      m_Calls: []
   OnHoverActiveMaterial: {fileID: 2100000, guid: 94636df36b9711b43832858842331787, type: 2}
-  OnHoverInactiveMaterial: {fileID: 2100000, guid: bfac12319a596d348b2a94c4777f0bd7, type: 2}
+  OnNoteTriggeredMaterial: {fileID: 0}
   hoverSound: {fileID: 0}
+  PlayOnMiddlePosition: 0
   OscSend: {fileID: 5837562058680534170}
 --- !u!82 &4085132984494950425
 AudioSource:
@@ -1566,19 +1558,13 @@ MonoBehaviour:
   pitch: 67
   NoteName: G3
   velocity: 100
-  NoteNameMesh: {fileID: 0}
-  eyeInteractObject: {fileID: 0}
-  SendAddress: /hand0
-  ReceiveNote: /Note1
-  ReceiveVelocity: /Velocity1
+  LastReceivedVelocity: 0
   Transmitter: {fileID: 0}
   Receiver: {fileID: 0}
-  LastReceivedVelocity: 0
-  IdleObject: {fileID: 902550746336056687}
-  GuideObject: {fileID: 1556665635880255044}
+  NoteNameMesh: {fileID: 0}
+  eyeInteractObject: {fileID: 0}
   videoClip: {fileID: 0}
   videoPlayer: {fileID: 0}
-  targetRenderer: {fileID: 0}
 --- !u!64 &4909971028365156162
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1642,12 +1628,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnMouseEnterActive: 0
   UseUnityAudioClip: 0
-  OnObjectHover:
-    m_PersistentCalls:
-      m_Calls: []
   OnHoverActiveMaterial: {fileID: 2100000, guid: 94636df36b9711b43832858842331787, type: 2}
-  OnHoverInactiveMaterial: {fileID: 2100000, guid: bfac12319a596d348b2a94c4777f0bd7, type: 2}
+  OnNoteTriggeredMaterial: {fileID: 0}
   hoverSound: {fileID: 0}
+  PlayOnMiddlePosition: 0
   OscSend: {fileID: 4548422074098374992}
 --- !u!82 &6948693670093031869
 AudioSource:
@@ -1775,19 +1759,13 @@ MonoBehaviour:
   pitch: 0
   NoteName: 
   velocity: 100
-  NoteNameMesh: {fileID: 0}
-  eyeInteractObject: {fileID: 0}
-  SendAddress: /hand0
-  ReceiveNote: /Note1
-  ReceiveVelocity: /Velocity1
+  LastReceivedVelocity: 0
   Transmitter: {fileID: 0}
   Receiver: {fileID: 0}
-  LastReceivedVelocity: 0
-  IdleObject: {fileID: 902550746336056687}
-  GuideObject: {fileID: 3211498691312788921}
+  NoteNameMesh: {fileID: 0}
+  eyeInteractObject: {fileID: 0}
   videoClip: {fileID: 0}
   videoPlayer: {fileID: 0}
-  targetRenderer: {fileID: 0}
 --- !u!64 &3403638375474280942
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1851,12 +1829,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnMouseEnterActive: 0
   UseUnityAudioClip: 0
-  OnObjectHover:
-    m_PersistentCalls:
-      m_Calls: []
   OnHoverActiveMaterial: {fileID: 2100000, guid: 94636df36b9711b43832858842331787, type: 2}
-  OnHoverInactiveMaterial: {fileID: 2100000, guid: bfac12319a596d348b2a94c4777f0bd7, type: 2}
+  OnNoteTriggeredMaterial: {fileID: 0}
   hoverSound: {fileID: 0}
+  PlayOnMiddlePosition: 0
   OscSend: {fileID: 5576350818456765762}
 --- !u!82 &7395475861040642456
 AudioSource:
@@ -1994,19 +1970,13 @@ MonoBehaviour:
   pitch: 60
   NoteName: C3
   velocity: 100
-  NoteNameMesh: {fileID: 0}
-  eyeInteractObject: {fileID: 0}
-  SendAddress: /hand0
-  ReceiveNote: /Note1
-  ReceiveVelocity: /Velocity1
+  LastReceivedVelocity: 0
   Transmitter: {fileID: 0}
   Receiver: {fileID: 0}
-  LastReceivedVelocity: 0
-  IdleObject: {fileID: 902550746336056687}
-  GuideObject: {fileID: 6014643463039146090}
+  NoteNameMesh: {fileID: 0}
+  eyeInteractObject: {fileID: 0}
   videoClip: {fileID: 0}
   videoPlayer: {fileID: 0}
-  targetRenderer: {fileID: 0}
 --- !u!64 &5047418636774549018
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2070,12 +2040,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnMouseEnterActive: 0
   UseUnityAudioClip: 0
-  OnObjectHover:
-    m_PersistentCalls:
-      m_Calls: []
   OnHoverActiveMaterial: {fileID: 2100000, guid: 94636df36b9711b43832858842331787, type: 2}
-  OnHoverInactiveMaterial: {fileID: 2100000, guid: bfac12319a596d348b2a94c4777f0bd7, type: 2}
+  OnNoteTriggeredMaterial: {fileID: 0}
   hoverSound: {fileID: 0}
+  PlayOnMiddlePosition: 0
   OscSend: {fileID: 3458915995274879587}
 --- !u!82 &2641200587441444992
 AudioSource:
@@ -2193,19 +2161,13 @@ MonoBehaviour:
   pitch: 77
   NoteName: F4
   velocity: 100
-  NoteNameMesh: {fileID: 0}
-  eyeInteractObject: {fileID: 0}
-  SendAddress: /hand0
-  ReceiveNote: /Note1
-  ReceiveVelocity: /Velocity1
+  LastReceivedVelocity: 0
   Transmitter: {fileID: 0}
   Receiver: {fileID: 0}
-  LastReceivedVelocity: 0
-  IdleObject: {fileID: 902550746336056687}
-  GuideObject: {fileID: 2567189526826394428}
+  NoteNameMesh: {fileID: 0}
+  eyeInteractObject: {fileID: 0}
   videoClip: {fileID: 0}
   videoPlayer: {fileID: 0}
-  targetRenderer: {fileID: 0}
 --- !u!64 &8479088414631505324
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2269,12 +2231,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnMouseEnterActive: 0
   UseUnityAudioClip: 0
-  OnObjectHover:
-    m_PersistentCalls:
-      m_Calls: []
   OnHoverActiveMaterial: {fileID: 2100000, guid: 94636df36b9711b43832858842331787, type: 2}
-  OnHoverInactiveMaterial: {fileID: 2100000, guid: bfac12319a596d348b2a94c4777f0bd7, type: 2}
+  OnNoteTriggeredMaterial: {fileID: 0}
   hoverSound: {fileID: 0}
+  PlayOnMiddlePosition: 0
   OscSend: {fileID: 5743005321599465626}
 --- !u!82 &1801551309395358923
 AudioSource:
@@ -2392,19 +2352,13 @@ MonoBehaviour:
   pitch: 65
   NoteName: F3
   velocity: 100
-  NoteNameMesh: {fileID: 0}
-  eyeInteractObject: {fileID: 0}
-  SendAddress: /hand0
-  ReceiveNote: /Note1
-  ReceiveVelocity: /Velocity1
+  LastReceivedVelocity: 0
   Transmitter: {fileID: 0}
   Receiver: {fileID: 0}
-  LastReceivedVelocity: 0
-  IdleObject: {fileID: 902550746336056687}
-  GuideObject: {fileID: 3785642818755295753}
+  NoteNameMesh: {fileID: 0}
+  eyeInteractObject: {fileID: 0}
   videoClip: {fileID: 0}
   videoPlayer: {fileID: 0}
-  targetRenderer: {fileID: 0}
 --- !u!64 &7622065461542623640
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2468,12 +2422,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnMouseEnterActive: 0
   UseUnityAudioClip: 0
-  OnObjectHover:
-    m_PersistentCalls:
-      m_Calls: []
   OnHoverActiveMaterial: {fileID: 2100000, guid: 94636df36b9711b43832858842331787, type: 2}
-  OnHoverInactiveMaterial: {fileID: 2100000, guid: bfac12319a596d348b2a94c4777f0bd7, type: 2}
+  OnNoteTriggeredMaterial: {fileID: 0}
   hoverSound: {fileID: 0}
+  PlayOnMiddlePosition: 0
   OscSend: {fileID: 7211517286955566246}
 --- !u!82 &4631870048890791421
 AudioSource:
@@ -2591,19 +2543,13 @@ MonoBehaviour:
   pitch: 76
   NoteName: E4
   velocity: 100
-  NoteNameMesh: {fileID: 0}
-  eyeInteractObject: {fileID: 0}
-  SendAddress: /hand0
-  ReceiveNote: /Note1
-  ReceiveVelocity: /Velocity1
+  LastReceivedVelocity: 0
   Transmitter: {fileID: 0}
   Receiver: {fileID: 0}
-  LastReceivedVelocity: 0
-  IdleObject: {fileID: 902550746336056687}
-  GuideObject: {fileID: 2626403443788605815}
+  NoteNameMesh: {fileID: 0}
+  eyeInteractObject: {fileID: 0}
   videoClip: {fileID: 0}
   videoPlayer: {fileID: 0}
-  targetRenderer: {fileID: 0}
 --- !u!64 &5160222662358899656
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2667,12 +2613,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnMouseEnterActive: 0
   UseUnityAudioClip: 0
-  OnObjectHover:
-    m_PersistentCalls:
-      m_Calls: []
   OnHoverActiveMaterial: {fileID: 2100000, guid: 94636df36b9711b43832858842331787, type: 2}
-  OnHoverInactiveMaterial: {fileID: 2100000, guid: bfac12319a596d348b2a94c4777f0bd7, type: 2}
+  OnNoteTriggeredMaterial: {fileID: 0}
   hoverSound: {fileID: 0}
+  PlayOnMiddlePosition: 0
   OscSend: {fileID: 6590695177605191507}
 --- !u!82 &8470901249203681658
 AudioSource:
@@ -2800,19 +2744,13 @@ MonoBehaviour:
   pitch: 72
   NoteName: C4
   velocity: 100
-  NoteNameMesh: {fileID: 0}
-  eyeInteractObject: {fileID: 0}
-  SendAddress: /hand0
-  ReceiveNote: /Note1
-  ReceiveVelocity: /Velocity1
+  LastReceivedVelocity: 0
   Transmitter: {fileID: 0}
   Receiver: {fileID: 0}
-  LastReceivedVelocity: 0
-  IdleObject: {fileID: 902550746336056687}
-  GuideObject: {fileID: 2033791472155220053}
+  NoteNameMesh: {fileID: 0}
+  eyeInteractObject: {fileID: 0}
   videoClip: {fileID: 0}
   videoPlayer: {fileID: 0}
-  targetRenderer: {fileID: 0}
 --- !u!64 &6500921540349539258
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2876,12 +2814,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnMouseEnterActive: 0
   UseUnityAudioClip: 0
-  OnObjectHover:
-    m_PersistentCalls:
-      m_Calls: []
   OnHoverActiveMaterial: {fileID: 2100000, guid: 94636df36b9711b43832858842331787, type: 2}
-  OnHoverInactiveMaterial: {fileID: 2100000, guid: bfac12319a596d348b2a94c4777f0bd7, type: 2}
+  OnNoteTriggeredMaterial: {fileID: 0}
   hoverSound: {fileID: 0}
+  PlayOnMiddlePosition: 0
   OscSend: {fileID: 186056409678076138}
 --- !u!82 &2509792331096198058
 AudioSource:

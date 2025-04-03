@@ -108,7 +108,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 9999
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -338,6 +338,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnMouseEnterActive: 0
   UseUnityAudioClip: 0
+  useJoyStick: 1
   OnHoverActiveMaterial: {fileID: 2100000, guid: bfac12319a596d348b2a94c4777f0bd7, type: 2}
   OnNoteTriggeredMaterial: {fileID: 0}
   hoverSound: {fileID: 0}
@@ -481,7 +482,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -682,7 +683,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2

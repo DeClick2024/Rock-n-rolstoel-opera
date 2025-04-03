@@ -11,7 +11,7 @@ public class CyllinderSizeSetter : MonoBehaviour
     {
         _buttonTransform = GetComponent<Transform>();
         _sceneSettings = _buttonTransform.root.GetComponent<SceneSettings>();
-        _sceneSettings.ButtonsSize += ChangeButtonSize;
+        //_sceneSettings.ButtonsSize += ChangeButtonSize;
         _buttonTransform = GetComponent<Transform>();
         _originalScale = transform.localScale;
     }
@@ -28,6 +28,6 @@ public class CyllinderSizeSetter : MonoBehaviour
 
     private void OnDestroy()
     {
-        _sceneSettings.ButtonsSize -= ChangeButtonSize;
+        //_sceneSettings.ButtonsSize -= ChangeButtonSize;
     }
 }

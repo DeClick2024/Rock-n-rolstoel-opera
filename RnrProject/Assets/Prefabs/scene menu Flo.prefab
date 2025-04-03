@@ -33,6 +33,7 @@ Transform:
   - {fileID: 5522868293949727413}
   - {fileID: 3461969063228026212}
   - {fileID: 1610891992861405979}
+  - {fileID: 4634795308138660557}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1169165180973000327
@@ -304,6 +305,96 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 2320153208124574691, guid: 48f97a3d9f3264a17b2158fe6a60fdc0, type: 3}
   m_PrefabInstance: {fileID: 4739531247298826648}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6944777992904050990
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 7400479877819442063}
+    m_Modifications:
+    - target: {fileID: 2320153208124574691, guid: 48f97a3d9f3264a17b2158fe6a60fdc0, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.7911458
+      objectReference: {fileID: 0}
+    - target: {fileID: 2320153208124574691, guid: 48f97a3d9f3264a17b2158fe6a60fdc0, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.2747003
+      objectReference: {fileID: 0}
+    - target: {fileID: 2320153208124574691, guid: 48f97a3d9f3264a17b2158fe6a60fdc0, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.41756967
+      objectReference: {fileID: 0}
+    - target: {fileID: 2320153208124574691, guid: 48f97a3d9f3264a17b2158fe6a60fdc0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.52
+      objectReference: {fileID: 0}
+    - target: {fileID: 2320153208124574691, guid: 48f97a3d9f3264a17b2158fe6a60fdc0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.92
+      objectReference: {fileID: 0}
+    - target: {fileID: 2320153208124574691, guid: 48f97a3d9f3264a17b2158fe6a60fdc0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 6.0121775
+      objectReference: {fileID: 0}
+    - target: {fileID: 2320153208124574691, guid: 48f97a3d9f3264a17b2158fe6a60fdc0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2320153208124574691, guid: 48f97a3d9f3264a17b2158fe6a60fdc0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2320153208124574691, guid: 48f97a3d9f3264a17b2158fe6a60fdc0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2320153208124574691, guid: 48f97a3d9f3264a17b2158fe6a60fdc0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2320153208124574691, guid: 48f97a3d9f3264a17b2158fe6a60fdc0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2320153208124574691, guid: 48f97a3d9f3264a17b2158fe6a60fdc0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2320153208124574691, guid: 48f97a3d9f3264a17b2158fe6a60fdc0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7419985328566448941, guid: 48f97a3d9f3264a17b2158fe6a60fdc0, type: 3}
+      propertyPath: m_Name
+      value: 'Goto: joyStickUse'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7971566336107313165, guid: 48f97a3d9f3264a17b2158fe6a60fdc0, type: 3}
+      propertyPath: m_text
+      value: joyStickUse
+      objectReference: {fileID: 0}
+    - target: {fileID: 8953841390206939824, guid: 48f97a3d9f3264a17b2158fe6a60fdc0, type: 3}
+      propertyPath: role
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8953841390206939824, guid: 48f97a3d9f3264a17b2158fe6a60fdc0, type: 3}
+      propertyPath: GotoScene
+      value: 
+      objectReference: {fileID: 102900000, guid: c241482cf2c0c8e4b81ecdab7f48f3dc, type: 3}
+    - target: {fileID: 8953841390206939824, guid: 48f97a3d9f3264a17b2158fe6a60fdc0, type: 3}
+      propertyPath: GotoSceneString
+      value: joyStickUse
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 48f97a3d9f3264a17b2158fe6a60fdc0, type: 3}
+--- !u!4 &4634795308138660557 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2320153208124574691, guid: 48f97a3d9f3264a17b2158fe6a60fdc0, type: 3}
+  m_PrefabInstance: {fileID: 6944777992904050990}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7825000501591386454
 PrefabInstance:

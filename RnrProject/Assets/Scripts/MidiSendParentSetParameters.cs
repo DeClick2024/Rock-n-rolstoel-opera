@@ -4,6 +4,7 @@ public class MidiSendParentSetParameters : MonoBehaviour
 {
     [SerializeField] bool OnMouseEnterActive; //guess this can be hidden
     [SerializeField] bool UseUnityAudioClip;
+    public bool UseJoyStick;
 
     void Start()
     {
@@ -26,6 +27,7 @@ public class MidiSendParentSetParameters : MonoBehaviour
         {
             note.OnMouseEnterActive = OnMouseEnterActive;
             note.UseUnityAudioClip = UseUnityAudioClip;
+            note.useJoyStick = UseJoyStick;
         }
 
         //set parameters
@@ -41,5 +43,15 @@ public class MidiSendParentSetParameters : MonoBehaviour
             i++;
         }
         return eyeInteractebles;
+    }
+
+    public void setUseJoyStick(bool value)
+    {
+        UseJoyStick = value;
+        EyeInteractable[] eyeInteractebles = FindEyeInteractables();
+        foreach (EyeInteractable note in eyeInteractebles)
+        {
+            note.useJoyStick = value;
+        }
     }
 }

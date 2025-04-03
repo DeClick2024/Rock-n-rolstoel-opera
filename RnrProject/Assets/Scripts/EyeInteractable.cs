@@ -11,6 +11,7 @@ public class EyeInteractable : MonoBehaviour
     public bool IsHovered { get; set; } //changed by eyetrackingray (need to make a mouse ray for tests)
     public bool OnMouseEnterActive = false;
     public bool UseUnityAudioClip = false;
+    public bool useJoyStick = true;
     private bool isAtThePlayPosition = false;
 
     private float currentJoystickXPosition;
@@ -37,6 +38,9 @@ public class EyeInteractable : MonoBehaviour
     private bool timerActive = false;
     private float joyStickZeroStamp = 0;
     private float timeStrumValue = 0;
+    private bool isOnMiddlePos = true;
+    private bool notePlayed = false;
+    private bool triggeredByStick = false;
 
     private void Awake()
     {
@@ -53,19 +57,46 @@ public class EyeInteractable : MonoBehaviour
     private void Update()
     {
         ChangeMaterial();
-        if (IsHovered) PlaySound();
+        if (IsHovered && useJoyStick) PlaySound();
+        else if (IsHovered && !notePlayed)
+        {
+            OscSend.PlayNote(100);
+            audioSource.PlayOneShot(hoverSound);
+            notePlayed = true;
+        }
+
+        if (!IsHovered & !triggeredByStick)
+        {
+            OscSend.StopNote();
+            notePlayed = false;
+        }
     }
 
     private void PlaySound()
     {
-        //Debug.Log($"'{IsHovered}, {isAtThePlayPosition}, {timerActive}");
-        if (IsHovered && isAtThePlayPosition && !timerActive)
+        if (!useJoyStick)
         {
-            Debug.Log("play:" + timeStrumValue);
-            OscSend.PlayNote(OneStringVelocityINT);
-            //audioSource.PlayOneShot(hoverSound, OneStringVelocity);
-            audioSource.PlayOneShot(hoverSound, timeStrumValue);
-            StartCoroutine(StartTimer());
+            OscSend.PlayNote(100);
+        }
+        else
+        {
+            //Debug.Log($"'{IsHovered}, {isAtThePlayPosition}, {timerActive}");
+            if (IsHovered && isAtThePlayPosition && !timerActive && !notePlayed)
+            {
+                notePlayed = true;
+                Debug.Log("playSound:" + timeStrumValue);
+                //OscSend.PlayNote(OneStringVelocityINT);
+                int volumeSend = Convert.ToInt32(timeStrumValue * 100);
+
+                if (volumeSend < 0) volumeSend = 1;
+                if (volumeSend > 128) volumeSend = 128;
+
+
+                OscSend.PlayNote(volumeSend);
+                //audioSource.PlayOneShot(hoverSound, OneStringVelocity);
+                audioSource.PlayOneShot(hoverSound, timeStrumValue);
+                //StartCoroutine(StartTimer());
+            }
         }
     }
 
@@ -93,6 +124,8 @@ public class EyeInteractable : MonoBehaviour
 
     void JoystickReciever(Vector2 currentPosition) //задержка времени
     {
+        if (!IsHovered) return;
+
         currentJoystickXPosition = currentPosition.x;
         if (PlayOnMiddlePosition)
         {
@@ -103,16 +136,36 @@ public class EyeInteractable : MonoBehaviour
         {
             if (currentPosition.x == 0)
             {
-                timerActive = false;
+                if (!isOnMiddlePos)
+                {
+                    Debug.Log("Set middle position");
+                    OscSend.StopNote();
+                    timerActive = false;
+                    isOnMiddlePos = true;
+                    notePlayed = false;
+                    isAtThePlayPosition = false;
+                }
                 joyStickZeroStamp = Time.time;
+
             }
-            if (currentPosition.x >= 0.9f || currentPosition.x <= -0.9f)
+            else if (currentPosition.x >= 0.9f || currentPosition.x <= -0.9f)
             {
-                timeStrumValue = 1-(Time.time - joyStickZeroStamp);
-                Debug.Log("Timestrumvalue=" + timeStrumValue);
-                isAtThePlayPosition = true;
+                if (!notePlayed)
+                {
+                    Debug.Log("Play note");
+                    timeStrumValue = 1 - (Time.time - joyStickZeroStamp);
+                    Debug.Log("Timestrumvalue=" + timeStrumValue);
+                    isAtThePlayPosition = true;
+                    isOnMiddlePos = false;
+                    //notePlayed = true;
+                }
+
             }
-            else isAtThePlayPosition = false;
+            else
+            {
+                isOnMiddlePos = false;
+                isAtThePlayPosition = false;
+            }
         }
     }
 
@@ -127,5 +180,21 @@ public class EyeInteractable : MonoBehaviour
         timerActive = true; // Устанавливаем флаг
         yield return new WaitForSeconds(1f); // Ждём 1 секунду;
         timerActive = false; // Сбрасываем флаг
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        OscSend.PlayNote(100);
+        audioSource.PlayOneShot(hoverSound);
+        notePlayed = true;
+        triggeredByStick = true;
+
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        OscSend.StopNote();
+        notePlayed = false;
+        triggeredByStick = false;
     }
 }

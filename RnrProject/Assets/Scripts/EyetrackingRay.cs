@@ -11,6 +11,12 @@ public class EyeTrackingRay : MonoBehaviour
     [SerializeField] private LayerMask layersToInclude;
     [SerializeField] private Color rayColorDefaultState = Color.yellow;
     [SerializeField] private Color rayColorHoverState = Color.red;
+    [SerializeField] private GameObject lookAtObject;
+    [SerializeField] private GameObject lookAtPlaneObject;
+
+    public bool showLine = true;
+    private Color colorInvisible = new Color(0, 0, 0, 0);
+    private Plane lookAtPlane;
 
     private LineRenderer _lineRenderer;
 
@@ -20,23 +26,65 @@ public class EyeTrackingRay : MonoBehaviour
     void Start()
     {
         _lineRenderer = GetComponent<LineRenderer>();
+        lookAtPlane = new Plane(-lookAtPlaneObject.transform.forward,lookAtPlaneObject.transform.position);
         SetupRay();
     }
 
     void FixedUpdate()
     {
+        //show lookAtObject
+
+        if (Application.isEditor)
+        {
+            Ray MouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hitMouse;
+
+            // Casts the ray and get the first game object hit
+            if (Physics.Raycast(MouseRay, out hitMouse, Mathf.Infinity, layersToInclude))
+            {
+                Debug.Log("This hit at " + hitMouse.point);
+
+                //only change position if first hit is not itself or other follow object
+                if (hitMouse.collider.gameObject.tag != lookAtObject.tag)
+                //if (hitMouse.colliderInstanceID == lookAtPlaneObject.GetComponent<Collider>().GetInstanceID())
+                {
+                    lookAtObject.transform.position = hitMouse.point;
+                }
+            }
+        }
+        
+
         RaycastHit hit;
         Vector3 rayDirection = transform.TransformDirection(Vector3.forward) * rayDistance;
+
+        /*
         Plane p = new Plane(Vector3.right, 0);
-        var ray = new Ray(transform.position, transform.forward);
-        if (p.Raycast(new Ray(transform.position, transform.forward), out float enter))
+        Ray ray = new Ray(transform.position, transform.forward);
+        if (p.Raycast(ray, out float enter))
         {
             cursorPoint = ray.GetPoint(enter);
+            if (!Application.isEditor)
+            {
+                //show hitpoint of ray on first object
+                lookAtObject.transform.position = cursorPoint;
+            }
         }
+        */
 
         // Does the ray intersect any objects excluding the player layer
         if (Physics.Raycast(transform.position, rayDirection, out hit, Mathf.Infinity, layersToInclude))
         {
+            cursorPoint = hit.point;//ray.GetPoint(enter);
+            if (!Application.isEditor)
+            {
+                //show hitpoint of ray on first object
+                //only change position if first hit is not itself or other follow object
+                if (hit.collider.gameObject.tag != lookAtObject.tag)
+                {
+                    lookAtObject.transform.position = cursorPoint;
+                }
+            }
+
             Unselect();
             _lineRenderer.startColor = rayColorHoverState;
             _lineRenderer.endColor = rayColorHoverState;
@@ -52,6 +100,12 @@ public class EyeTrackingRay : MonoBehaviour
             _lineRenderer.startColor = rayColorDefaultState;
             _lineRenderer.endColor = rayColorDefaultState;
             Unselect(true);
+        }
+
+        if (!showLine)
+        {
+            _lineRenderer.startColor = colorInvisible;
+            _lineRenderer.endColor = colorInvisible;
         }
     }
 

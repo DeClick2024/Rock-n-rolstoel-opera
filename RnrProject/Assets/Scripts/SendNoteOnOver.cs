@@ -108,6 +108,7 @@ using UnityEngine.Video;
 
         private void SendMidiNote(int pitch, int velocity)
         {
+            Debug.Log("Midi send:" + pitch + " ; " + velocity);
             OSCMessage message = CreateMidiNote(pitch, velocity);
             Transmitter.Send(message);
         }
